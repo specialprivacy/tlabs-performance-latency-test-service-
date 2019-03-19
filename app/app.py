@@ -5,7 +5,7 @@ consumer = KafkaConsumer(
   bootstrap_servers=['kafka:9092'],
   auto_offset_reset='earliest',
   enable_auto_commit=True,
-  group_id=str(uuid.uuid4()),
+  group_id="12345678",
   value_deserializer=lambda x: loads(x.decode('utf-8')))
 
 for message in consumer:
