@@ -1,4 +1,6 @@
 from kafka import KafkaConsumer
+from json import dumps
+from json import loads
 
 print("creating")
 consumer = KafkaConsumer(
@@ -12,10 +14,9 @@ consumer = KafkaConsumer(
 print("reading")
 for message in consumer:
   message = message.value
-  print(str(message))
-  if message["eventID"] == event_id:
-    message_id = message["eventID"]
-    time_stamp = long(message["timestamp"])
-    checked_time_stamp = long(message["checkedTimestamp"])
-    time_spent = abs(time_stamp - checked_time_stamp)
-    print(str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent))
+  # print(str(message))
+  message_id = message["eventID"]
+  time_stamp = float(message["timestamp"])
+  checked_time_stamp = float(message["checkedTimestamp"])
+  time_spent = abs(time_stamp - checked_time_stamp)
+  print(str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent))
