@@ -1,3 +1,4 @@
+import sys
 from kafka import KafkaConsumer
 from json import dumps
 from json import loads
@@ -12,6 +13,8 @@ consumer = KafkaConsumer(
   value_deserializer=lambda x: loads(x.decode('utf-8')))
 
 print("reading")
+sys.stdout.flush()
+
 for message in consumer:
   message = message.value
   # print(str(message))
@@ -20,3 +23,4 @@ for message in consumer:
   checked_time_stamp = float(message["checkedTimestamp"])
   time_spent = abs(time_stamp - checked_time_stamp)
   print(str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent))
+  sys.stdout.flush()
