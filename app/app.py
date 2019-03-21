@@ -24,5 +24,6 @@ for message in consumer:
   time_spent = abs(time_stamp - checked_time_stamp)
   log_message = str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent) + "\n"
   f.write(log_message)
+  f.flush()
 
 f.close()
