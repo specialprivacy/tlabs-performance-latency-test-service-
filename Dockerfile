@@ -5,6 +5,8 @@ WORKDIR /app
 
 RUN pip install kafka-python
 
+RUN mkdir -p /logs
+
 COPY ./app/ /app/
 
 CMD python app.py
