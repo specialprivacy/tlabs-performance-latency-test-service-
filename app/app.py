@@ -22,7 +22,7 @@ for message in consumer:
   time_stamp = float(message["timestamp"])
   checked_time_stamp = float(message["checkedTimestamp"])
   time_spent = abs(time_stamp - checked_time_stamp)
-  log_message = str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent)
+  log_message = str(message_id) + ";" + str(time_stamp) + ";" + str(checked_time_stamp) + ";" + str(time_spent) + "\n"
   f.write(log_message)
 
 f.close()
